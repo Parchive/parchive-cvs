@@ -24,3 +24,11 @@
 #DEFAULT (echo ""; id; echo %s; date; cat) >> $CVSROOT/CVSROOT/commitlog
 # or
 #DEFAULT (echo ""; id; echo %{sVv}; date; cat) >> $CVSROOT/CVSROOT/commitlog
+
+# SyncMail Updates for changes to the CVSROOT module.
+CVSROOT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail %{sVv}
+binerman@users.sourceforge.net
+
+# SyncMail Updates for ANY module.
+DEFAULT /cvsroot/sitedocs/CVSROOT/cvstools/syncmail %{sVv}
+parchive-commit@lists.sourceforge.net
