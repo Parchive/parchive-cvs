@@ -1,0 +1,121 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD Simplified DocBook XML V4.1.2.5//EN"
+  "http://www.oasis-open.org/docbook/xml/simple/4.1.2.5/sdocbook.dtd">
+<!--
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Parchive Project Frequently Asked Questions
+|  $Id$
+|
+| CONTRIBUTORS:
+|  Ryan Gallagher     <binerman@users.sourceforge.net>
+|
+| FORMATTING:
+|  The following document is authored in Docbook (XML).
+|
+|  The DTD and other resources can be found here:
+|   <http://www.docbook.org>
+|
+|  For instructions for producing viewable outputs from this format read
+|  any of the links below...
+|
+|  Docbook Definitive Guide:
+|   <http://docbook.org/tdg/en/index.html>
+|  Chapter on Publishing Docbook:
+|   <http://www.oasis-open.org/docbook/documentation/reference/html/ch04.html>
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| vim: set filetype=xml :
+| vim: set ts=2 :
+| vim: set sw=2 :
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+<article>
+  <articleinfo>
+    <title>Parchive Project Frequently Asked Questions</title>
+    <subtitle>
+      Questions and Answers Regarding Activities and Purpose of the Parcive Project.
+    </subtitle>
+    <!-- {{{ -->
+    <pubdate>:FIXME:</pubdate>
+    <publishername>
+      The Parchive Project
+      <ulink url="http://parchive.sourceforge.net">http://parchive.sourceforge.net</ulink>
+    </publishername>
+
+    <copyright>
+      <year>2003</year>
+      <holder>The Authors</holder>
+    </copyright>
+
+    <legalnotice>
+      :FIXME:
+    </legalnotice>
+
+    <!--
+      - It's just a faq, add your revisions but do not un-comment
+      - {{{
+    <revhistory>
+      <revision>
+        <revnumber></revnumber>
+        <revdate></revdate>
+        <revremark>
+        </revremark>
+      </revision>
+    </revhistory>
+      }}} -->
+
+    <authorgroup>
+      <!-- {{{ -->
+      <!--
+        - If you contribute to this document, add
+        - yourself here using the template below
+        -
+      <author>
+        <firstname>Firstname</firstname>
+        <surname>Lastname</surname>
+        <authorblurb>
+          <para>Contributor</para>
+        </authorblurb>
+      </author>
+        -->
+      <author>
+        <firstname>Ryan</firstname>
+        <surname>Gallagher</surname>
+        <authorblurb>
+          <para>Contributor</para>
+        </authorblurb>
+      </author>
+      <!-- }}} -->
+    </authorgroup>
+
+    <!-- }}} -->
+  </articleinfo>
+
+  <!--
+    - Begin document sections.  If the nature of the questions
+    - varies drastically, you may want to break them apart into
+    - groups using additional sections.
+    -
+    - If you have non q/a related content that belongs in this
+    - document somewhere, it needs to go inside a section, and
+    - not in the root of the <article>.
+    -->
+  <section id="sect1">
+    <title>Frequently Asked Questions</title>
+    <!-- {{{ -->
+    <qandaset>
+
+      <qandaentry>
+        <question>
+          <para>Quesiton paragraph?</para>
+        </question>
+        <answer>
+          <para>Answer Paragraph</para>
+        </answer>
+      </qandaentry>
+
+    </qandaset>
+    <!-- }}} -->
+  </section>
+
+</article>
