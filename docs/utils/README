@@ -29,4 +29,13 @@ CONTENTS:
     docbook simplified is also contained within, and can be useful when html
     output is generated.
 
+  - docbook-xml-4.2
+
+    http://www.docbook.org/xml/4.2/index.html
+
+    A copy of the Docbook XML DTD, can be used with tools like 'xmllint'
+    or 'nsgmls' to that documentation conforms to the standard.  A CSS for
+    docbook simplified is also contained within, and can be useful when html
+    output is generated.
+
 ###############################################################################
