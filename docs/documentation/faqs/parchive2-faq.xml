@@ -128,7 +128,7 @@
 
         <qandaentry>
           <question>
-            <para>What is PAR, what does it do?</para>
+            <para>What is PAR v1.0, what does it do?</para>
           </question>
           <answer>
             <para>:FIXME:</para>
@@ -153,9 +153,12 @@
           </answer>
         </qandaentry>
 
+        <!-- }}} -->
       </qandadiv>
+
       <qandadiv>
         <title>Creating and Posting PAR2 files on UseNet.</title>
+        <!-- {{{ -->
 
         <qandaentry>
           <question>
@@ -246,38 +249,63 @@
         <!-- {{{ -->
 
         <qandaentry>
+          <!-- author: binerman -->
           <question>
             <para>The PAR2 files are all different sizes, why is that?</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+            <!-- {{{ -->
+            <para>PAR2 files can fluctuate in size depending on what settings the creator used when building them.  Because each PAR2 file can contain mutilple individual recovery <emphasis>blocks</emphasis>, it is up to the par2 client application and the creator how they choose to distribute these blocks amongst the set of PAR2 files.</para>
+            <para>With that in mind, you may encounter PAR2 files that start small and get progressively larger as the file number increases.  This is because each one contains progressively more recovery blocks (as indicated by the +NN part of the filename). The logic behind this distribution is that you only need to download the <emphasis>minimum</emphasis> number of files that provides the block count you need to recover.</para>
+            <!-- }}} -->
           </answer>
         </qandaentry>
 
         <qandaentry>
+          <!-- author: binerman -->
           <question>
             <para>Should we download the small PAR2 files first and the others later?</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+            <!-- {{{ -->
+            <para>This depends on if you are monitoring your download personally, or setting up a cue to run overnight.</para>
+              <orderedlist>
+                <listitem>
+                  <para>When watching your downloads, you should grab the <filename>.PAR2</filename> or the smallest <filename>.volXX+XX.PAR2</filename> first, because this will function as a <filename>.sfv</filename> or <filename>.par</filename> file and help you verify how many further blocks/recovery blocks are needed. Then download all the binary <emphasis>data</emphasis> files that are present including all the pieces of the ones that are missing articles.</para>
+                  <para>Once you have used the par2 program to verify how many recovery blocks are necessary (if any) proceed to download a total of that many blocks by choosing the appropriate sized <filename>.PAR2</filename> files.  This will conserve bandwidth as you are downloading the minimum amount of data needed to recovery the posting.</para>
+                </listitem>
+                <listitem>
+                  <para>When building a cue, you probably want to use the same logic you would have for any other cue prior to PAR2 files showing up in usenet.  If article expiration is your primary concern, download them <emphasis>oldest first</emphasis> to grab what you can before they expire.</para>
+                  <para>Since your downloads are unmanned and you won't know how much recovery data is needed until you sit down the next day, you probably want to grab as much recovery data as possible (meaning all PAR2 files present.  Just discard the ones you don't need.</para>
+                </listitem>
+                </orderedlist>
+            <!-- }}} -->
           </answer>
         </qandaentry>
 
         <qandaentry>
+          <!-- author: binerman -->
           <question>
             <para>Do we need to download incomplete files?</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+            <!-- {{{ -->
+            <para>A DEFINITE YES!  This is the primary concept that makes PAR2 such an improvement over PAR1.  Since PAR2 deals with recovery <emphasis>blocks</emphasis> and not recovery <emphasis>files</emphasis>, it's vital that you download all the articles present in an effort to aquire ALL the potientally usable blocks that made it to your news-server.</para>
+            <para>That being said.  If the poster normally would have posted 15% recovery data when using the PAR1 scheme, and they have posted the same ratio of recovery data using the new PAR2 scheme, then essentially any blocks you extract from partial files are a bonus.  If the % recovery is not reduced, then PAR2 has the exact same chances of recoverying a post as PAR1 did.</para>
+            <para>But of course, you WANT to download the incompletes, because if the missing articles are distributed among many binaries, PAR1 would likely fail to recovery, but PAR2 with the same amount of recovery data (in most cases) CAN!.</para>
+            <!-- }}} -->
           </answer>
         </qandaentry>
 
         <qandaentry>
+          <!-- author: binerman -->
           <question>
             <para>How do I configure the XYZ news reader to let me download incomplete files.</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+            <!-- {{{ -->
+            <para>This question is a bit beyond the scope of this FAQ, as each news-reader is going to be very different in how they implement this, if they allow it at all.  Please refer to the larger document "PAR2 User's Guide" <ulink url=":FIXME:">:FIXME:</ulink>.</para>
+            <!-- }}} -->
           </answer>
         </qandaentry>
 
@@ -286,35 +314,53 @@
             <para>I've downloaded some incomplete files, but they are not being scanned, what do I do?</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+            <!-- {{{ -->
+            <para>This is probably due to the fact that their filenames do not match those specified in the recovery set.  To force them to be recognized you can add them to the set of files to scan.</para>
+            <para>With <application>QuickPar</application> this entails using the <guibutton>add</guibutton> button to point the applicaiton to other files containing usable blocks/recovery blocks.</para>
+            <para>With <application>par2cmdline</application> you will have to add these files to the arguments provided on the command line.</para>
+            <para>In general the techniques here will fluctuate as more clients are written, but each should have it's own way of finding and/or being given more files to look at.  At the time of this writing, no PAR2 clients actively scanned all files in a directory or have the ability to auto-rename them as <application>FSRaid</application> does.  One may turn up that performs this function, but no plans are made to incorporate this feature into the two existing clients due to the more computationaly intense process of looking for valid <emphasis>blocks</emphasis>.</para>
+            <!-- }}} -->
           </answer>
         </qandaentry>
 
         <qandaentry>
+          <!-- author: binerman -->
           <question>
             <para>I'm told I need NNN more blocks to be able to repair, what does that mean?</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+            <!-- {{{ -->
+            <para>This means you do not have a total of enough <emphasis>valid</emphasis> data blocks plus recovery blocks to facilitate a recovery yet.  If you did not download the incomplete binaries you should first do this and re-check your data-set using par2, or at least learn your lesson for next time.</para>
+            <!-- }}} -->
           </answer>
         </qandaentry>
 
         <qandaentry>
+          <!-- author: binerman -->
           <question>
             <para>My data files are damaged, how do I figure out which PAR2 files to download?</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+            <!-- {{{ -->
+            <para>As stated in another answer, PAR2 files contain many individual recovery <emphasis>blocks</emphasis> and your goal is to have a total of valid data blocks + valid recovery blocks that is equal to the number of blocks the data-set was virtually sliced into.</para>
+            <para>You may not know that number just by looking at the files, but once you run the PAR2 compatible validation client, you should be told how many blocks shy you were of that total.</para>
+            <para>Examine the PAR2 filenames on your news-server. They should indicate a "block-count" using the <filename>+YY</filename> count or <filename>NN-YY</filename> range part of the filename <filename>.volNN+YY.PAR2</filename> or maybe <filename>.volNN-YY.PAR2</filename>.  You can download as many blocks as you like, but you can use the filenames to determine the <emphasis>minimum</emphasis> necessary to facilitate a full recovery.</para>
           </answer>
+          <!-- }}} -->
         </qandaentry>
 
         <qandaentry>
+          <!-- author: binerman -->
           <question>
             <para>I've downloaded everything I can and still can't repair. Should I ask for fills, reposts, or more PAR2 files?</para>
           </question>
           <answer>
-            <para>:FIXME:</para>
+          <!-- {{{ -->
+            <para>For very severe gaps in your news-server's feed PAR2, just like PAR1, may be unable to help.  You should look at the poster's/group's repost and fill policy and then ask for additional recovery blocks.  A secondary or premium news service also helps in these matters.</para>
+            <para>Each group and poster may have their own policy in this area. Please use good usenet etiquette and follow the policies.  That being said...</para>
+            <para>The Parchive Project suggests using <emphasis>additional PAR2 recovery blocks</emphasis> when providing fills, as they have the potiental to help everyone needing fills, not just a couple people missing specific articles/binaries.  Additional PAR2 recovery blocks can be generated by the original poster or by an individual having a complete and valid copy of the entire data-set.</para>
           </answer>
+          <!-- }}} -->
         </qandaentry>
 
         <!-- }}} -->
