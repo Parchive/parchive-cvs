@@ -1,6 +1,8 @@
 <?xml version="1.0" standalone="no" ?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD Simplified DocBook XML V4.1.2.5//EN"
-  "http://www.oasis-open.org/docbook/xml/simple/4.1.2.5/sdocbook.dtd">
+<!DOCTYPE article PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4//EN"
+  "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd" [
+  <!ENTITY license SYSTEM "../../licenses/gnu/fdl.xml">
+]>
 <!--
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 | Parchive v2.0 Frequently Asked Questions
@@ -8,6 +10,22 @@
 |
 | CONTRIBUTORS:
 |  Ryan Gallagher     <binerman@users.sourceforge.net>
+|  Peter Clements     <peterbclements@users.sourceforge.net>
+|
+| COPYRIGHT:
+|  Copyright (c) 2003, The Parchive Project
+|
+| LEGAL NOTICE:
+|  Permission is granted to copy, distribute and/or modify this document
+|  under the terms of the GNU Free Documentation License, Version 1.2
+|  or any later version published by the Free Software Foundation;
+|  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+|  A copy of the license is included in the section entitled "GNU
+|  Free Documentation License".
+|
+| COPYING:
+|  This document is distributed under the GNU Free Documentation License.
+|  <http://www.gnu.org/licenses/fdl.html>
 |
 | FORMATTING:
 |  The following document is authored in Docbook (XML).
@@ -24,10 +42,6 @@
 |   <http://www.oasis-open.org/docbook/documentation/reference/html/ch04.html>
 |
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| vim: set filetype=xml :
-| vim: set ts=2 :
-| vim: set sw=2 :
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 -->
 <article>
   <articleinfo>
@@ -36,7 +50,7 @@
       Questions and Answers regarding the Parity Volume Specification v2.0
     </subtitle>
     <!-- {{{ -->
-    <pubdate>:FIXME:</pubdate>
+    <pubdate>:FIXME: Publication Date</pubdate>
     <publishername>
       The Parchive Project
       <ulink url="http://parchive.sourceforge.net">http://parchive.sourceforge.net</ulink>
@@ -44,43 +58,37 @@
 
     <copyright>
       <year>2003</year>
-      <holder>The Authors</holder>
+      <holder>The Parchive Project</holder>
     </copyright>
 
     <legalnotice>
-      :FIXME:
+      Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled "GNU Free Documentation License".
     </legalnotice>
 
     <!--
-      - It's just a faq, add your revisions but do not un-comment
-      - {{{
-    <revhistory>
-      <revision>
-        <revnumber></revnumber>
-        <revdate></revdate>
-        <revremark>
-        </revremark>
-      </revision>
-    </revhistory>
-      }}} -->
-
+      - If you contribute to this document, add
+      - yourself in <authorgroup> using the template below
+      -
+      - <author>
+      -   <firstname>Firstname</firstname>
+      -     <surname>Lastname</surname>
+      -     <authorblurb>
+      -       <para>Contributor</para>
+      -     </authorblurb>
+      -   </author>
+      -->
     <authorgroup>
       <!-- {{{ -->
-      <!--
-        - If you contribute to this document, add
-        - yourself here using the template below
-        -
       <author>
-        <firstname>Firstname</firstname>
-        <surname>Lastname</surname>
+        <firstname>Ryan</firstname>
+        <surname>Gallagher</surname>
         <authorblurb>
           <para>Contributor</para>
         </authorblurb>
       </author>
-        -->
       <author>
-        <firstname>Ryan</firstname>
-        <surname>Gallagher</surname>
+        <firstname>Peter</firstname>
+        <surname>Clements</surname>
         <authorblurb>
           <para>Contributor</para>
         </authorblurb>
@@ -97,7 +105,7 @@
     - groups using additional sections.
     -
     - If you have non q/a related content that belongs in this
-    - document somewhere, it needs to go inside a section, and
+    - document some where, it needs to go inside a section, and
     - not in the root of the <article>.
     -->
   <section id="sect1">
@@ -105,17 +113,235 @@
     <!-- {{{ -->
     <qandaset>
 
-      <qandaentry>
-        <question>
-          <para>Quesiton paragraph?</para>
-        </question>
-        <answer>
-          <para>Answer Paragraph</para>
-        </answer>
-      </qandaentry>
+      <qandadiv>
+        <title>About PAR 2.0</title>
+        <!-- {{{ -->
+
+        <qandaentry>
+          <question>
+            <para>What is PAR v2.0?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>What is PAR, what does it do?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>What are the differences between PAR v1.0 and PAR v2.0?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Can you use PAR v1.0 files with PAR v2.0 and vice versa?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+      </qandadiv>
+      <qandadiv>
+        <title>Creating and Posting PAR2 files on UseNet.</title>
+
+        <qandaentry>
+          <question>
+            <para>Is it necessary to use RAR (or another archiver/splitter) to create lots of equally sized files?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Can we still use RAR if we want to?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>What block size / block count should I use?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Does the block size have to match the article size?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>How do you change the article size in XYZ news posting program?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>What redundancy % should I use?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Should I post the PAR2 files first or last?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Is it a good idea to post both PAR1 and PAR2 files?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>How do you create additional PAR2 files?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <!-- }}} -->
+      </qandadiv>
+
+      <qandadiv>
+        <title>Downloading and Using PAR2 files from UseNet.</title>
+        <!-- {{{ -->
+
+        <qandaentry>
+          <question>
+            <para>The PAR2 files are all different sizes, why is that?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Should we download the small PAR2 files first and the others later?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>Do we need to download incomplete files?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>How do I configure the XYZ news reader to let me download incomplete files.</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>I've downloaded some incomplete files, but they are not being scanned, what do I do?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>I'm told I need NNN more blocks to be able to repair, what does that mean?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>My data files are damaged, how do I figure out which PAR2 files to download?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <qandaentry>
+          <question>
+            <para>I've downloaded everything I can and still can't repair. Should I ask for fills, reposts, or more PAR2 files?</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <!-- }}} -->
+      </qandadiv>
+
+      <qandadiv>
+        <title>Using PAR2 files to protect data on a CD or DVD.</title>
+        <!-- {{{ -->
+
+        <qandaentry>
+          <question>
+            <para>:FIXME:</para>
+          </question>
+          <answer>
+            <para>:FIXME:</para>
+          </answer>
+        </qandaentry>
+
+        <!-- }}} -->
+      </qandadiv>
 
     </qandaset>
+
     <!-- }}} -->
   </section>
+
+  <!-- Include GNU FDL Appendix per license requirements -->
+  &license;
 
 </article>

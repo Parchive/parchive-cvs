@@ -1,6 +1,8 @@
 <?xml version="1.0" standalone="no" ?>
-<!DOCTYPE article PUBLIC "-//OASIS//DTD Simplified DocBook XML V4.1.2.5//EN"
-  "http://www.oasis-open.org/docbook/xml/simple/4.1.2.5/sdocbook.dtd">
+<!DOCTYPE article PUBLIC "-//Norman Walsh//DTD DocBk XML V3.1.4//EN"
+  "http://nwalsh.com/docbook/xml/3.1.4/db3xml.dtd" [
+  <!ENTITY license SYSTEM "../../licenses/gnu/fdl.xml">
+]>
 <!--
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 | Parchive Project Frequently Asked Questions
@@ -8,6 +10,21 @@
 |
 | CONTRIBUTORS:
 |  Ryan Gallagher     <binerman@users.sourceforge.net>
+|
+| COPYRIGHT:
+|  Copyright (c) 2003, The Parchive Project
+|
+| LEGAL NOTICE:
+|  Permission is granted to copy, distribute and/or modify this document
+|  under the terms of the GNU Free Documentation License, Version 1.2
+|  or any later version published by the Free Software Foundation;
+|  with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+|  A copy of the license is included in the section entitled "GNU
+|  Free Documentation License".
+|
+| COPYING:
+|  This document is distributed under the GNU Free Documentation License.
+|  <http://www.gnu.org/licenses/fdl.html>
 |
 | FORMATTING:
 |  The following document is authored in Docbook (XML).
@@ -23,10 +40,6 @@
 |  Chapter on Publishing Docbook:
 |   <http://www.oasis-open.org/docbook/documentation/reference/html/ch04.html>
 |
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-| vim: set filetype=xml :
-| vim: set ts=2 :
-| vim: set sw=2 :
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 -->
 <article>
@@ -44,40 +57,27 @@
 
     <copyright>
       <year>2003</year>
-      <holder>The Authors</holder>
+      <holder>The Parchive Project</holder>
     </copyright>
 
     <legalnotice>
-      :FIXME:
+      Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled "GNU Free Documentation License".
     </legalnotice>
 
     <!--
-      - It's just a faq, add your revisions but do not un-comment
-      - {{{
-    <revhistory>
-      <revision>
-        <revnumber></revnumber>
-        <revdate></revdate>
-        <revremark>
-        </revremark>
-      </revision>
-    </revhistory>
-      }}} -->
-
+      - If you contribute to this document, add
+      - yourself in <authorgroup> using the template below
+      -
+      - <author>
+      -   <firstname>Firstname</firstname>
+      -     <surname>Lastname</surname>
+      -     <authorblurb>
+      -       <para>Contributor</para>
+      -     </authorblurb>
+      -   </author>
+      -->
     <authorgroup>
       <!-- {{{ -->
-      <!--
-        - If you contribute to this document, add
-        - yourself here using the template below
-        -
-      <author>
-        <firstname>Firstname</firstname>
-        <surname>Lastname</surname>
-        <authorblurb>
-          <para>Contributor</para>
-        </authorblurb>
-      </author>
-        -->
       <author>
         <firstname>Ryan</firstname>
         <surname>Gallagher</surname>
@@ -117,5 +117,8 @@
     </qandaset>
     <!-- }}} -->
   </section>
+
+  <!-- Include GNU FDL Appendix per license requirements -->
+  &license;
 
 </article>
