@@ -1,4 +1,339 @@
 <chapter id="chap-reader-forteagent">
   <title>Forte Agent (Full Version)</title>
-  <para>:FIXME:</para>
+
+  <para>This chapter goes into detail regarding the use of Forte Agent as a primary news-reader in conjunction with the use of PAR2 recovery files.</para>
+
+  <para>For using PAR1 recovery files, the process is as simple as downloading the binaries via the normal method with Forte Agent.  Hence, this chapter does not cover any topics regarding PAR1 and Forte Agent.</para>
+
+  <section>
+    <title>Tool Pre-Requisites</title>
+    <!-- {{{ -->
+    <para>The following tools are required to accomodate the use of Agent and PAR2 recovery files.</para>
+
+    <section>
+      <title>Manual Ydecode Tool</title>
+      <!-- {{{ -->
+      <para>Because Forte Agent does not properly handle saving partial files when not all the articles are present, you will need a tool for manually decoding the articles.  A recommended Yenc decoding tool for win32 users is listed below.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><application>Yenc32</application> GUI Encoder/Decoder for Win32.</para>
+          <para><ulink href="http://sourceforge.net/projects/yenc32/">http://sourceforge.net/projects/yenc32/</ulink></para>
+        </listitem>
+      </itemizedlist>
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Manual Uudecode Tool</title>
+      <!-- {{{ -->
+      <para>You need another tool for decoding to handle the uuencoded postings.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><application>WinRAR</application> for Win32.</para>
+          <para><ulink href="http://www.rarsoft.com">http://www.rarsoft.com</ulink></para>
+        </listitem>
+      </itemizedlist>
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Par2 Compatible Recovery Client</title>
+      <!-- {{{ -->
+      <para>Obviously, if you want to handle PAR2, you will need an appropriate recovery client.  Two recommended options are listed below.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><application>par2cmdline</application> command line client.</para>
+          <para><ulink href="http://parchive.sourceforge.net">http://parchive.sourceforge.net</ulink> (See the "Clients" section)</para>
+        </listitem>
+        <listitem>
+          <para><application>QuickPar</application> GUI client for Win32.</para>
+          <para><ulink href="http://parchive.sourceforge.net">http://parchive.sourceforge.net</ulink> (See the "Clients" section)</para>
+        </listitem>
+      </itemizedlist>
+      <!-- }}} -->
+    </section>
+    <!-- }}} -->
+  </section>
+
+  <section>
+    <title>Configuring Forte Agent</title>
+    <!-- {{{ -->
+    <para> In order to handle articles correctly so that we can salvage the valid recovery blocks that they may contain, we need to configure agent's download settings to store the bodies and not immediately decode and save to file.  The automatic decoding and saving to files is where agent drops articles after encountering a missing one or an encoding error.</para>
+
+    <para> To ensure agent keeps the article bodies for you to handle manually do the following:</para>
+
+  <section>
+    <title>Change group and/or default properties settings</title>
+    <!-- {{{ -->
+    <para>Go to <application>Agent</application>'s <guimenu>Main Menu</guimenu> &gt; <guisubmenu>Gruop</guisubmenu> &gt; <guimenuitem>Properties</guimenuitem> for configuring just one group.  Or <guimenu>Main Menu</guimenu> &gt; <guisubmenu>Group</guisubmenu> &gt; <guimenuitem>Default Properties</guimenuitem> for default behaviors to affect all groups.  In the <guibutton>Recieve Fles</guibutton> change the following settings:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Check <guilabel>Override Default Settings</guilabel> if editing the default properties.</para>
+        </listitem>
+
+        <listitem>
+          <para>Uncheck <guilabel>Save Attachments Automatically</guilabel> .</para>
+        </listitem>
+      </itemizedlist>
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Resultant behavior</title>
+      <!-- {{{ -->
+      <para>The changes described above cause agent to retain all message bodies in their raw non-decoded format.  This applies to retrieving individual articles as well as files that are not missing any articles.</para>
+
+      <para>Unfortunately this is necessary for working-around <application>Agent</application>'s unfortunate behavior when autmatically saving and decoding attachments.</para>
+
+      <para>See the "Caveats" section for problems that these settings are likely to cause.</para>
+      <!-- }}} -->
+    </section>
+    <!-- }}} -->
+  </section>
+
+  <section>
+    <title>The Process</title>
+    <!-- {{{ -->
+    <para> I'll skip some here assuming you are already privy on how to mark, cue, and retrieve bodies/binaries using <application>Forte Agent</application>.</para>
+
+    <section>
+      <title>Retrieving a set of articles manually</title>
+      <!-- {{{ -->
+      <para>Lets use an example.  You refresh your headers and you see a posting that you would like to have.  It is accompanied by a set of PAR2 files for recovering missing chunks.</para>
+
+      <para>Unfortunately 10 of the 20 posted binaries are missing articles.  When you highlite one of these headers you should see this in your "body" window:</para>
+      <example>
+        <title>Incomplete article "body" view.</title>
+        <!-- {{{ -->
+<literallayout>
+[114021 lines, incomplete]
+
+[This is a multi-part message, of which only 23 of 24 parts are available.]
+[These parts are unavailable: 13]
+
+[To retrieve the incomplete message, use menu option Message | Join Sections.]
+</literallayout>
+        <!-- }}} -->
+      </example>
+
+      <para>Notice in the previous example that only ONE article is missing.  This is good news. It means that usually only one or two recovery blocks from the par2 set will be needed to recovery this error.  Now if we can just get agent to do it!</para>
+
+      <section>
+        <title>Option A - Manually join articles present</title>
+        <!-- {{{ -->
+        <para>Using this technique, you simply highlight a header that is missing articles.  Then <guimenu>Main Menu</guimenu> &gt; <guisubmenu>Message</guisubmenu> &gt; <guimenuitem>Join Sections</guimenuitem>.</para>
+
+        <para>A join dialog will pop up, verify that the message parts are in numerical order and hit <guibutton>OK</guibutton>.</para>
+
+        <tip>
+          <para>To get them in order it often helps to have the group sorted by subject.</para>
+        </tip>
+
+        <tip>
+          <para>If the articles were not auto-condensed to one header when you started, you can highlight all the parts of a single binary and perform the same operation.</para>
+        </tip>
+
+        <para>Next, simply mark the messages for retrieval as normal. They will not be saved out to your file-system, the bodies will remain in agent's database files until you delete them or save the attachments out manually.  See the "Caveats" section for known issues with this.</para>
+
+        <para>If you wish to immediately fetch the body, you may double-click the headers.</para>
+
+        <warning>
+          <para>Choosing <guimenuitem>Save All Attachments</guimenuitem> on highlited headers is the manual equivalent of the behavior we are desparately trying to avoid.  Saving attachments in this way on binaries missing articles will not yield the full set of useful data to the par2 recovery proces.</para>
+        </warning>
+        <!-- }}} -->
+      </section>
+
+      <section>
+        <title>Option B - Save article bodies individually</title>
+        <!-- {{{ -->
+        <para>An alternate approach, when you encounter binaries that are missing articles, you may opt to retrieve the article bodies on an individual basis.</para>
+
+        <para>Highlite a binary header that is missing articles. Choose <guimenu>Main Menu</guimenu> &gt; <guisubmenu>Message</guisubmenu> &gt; <guimenuitem>Split Sections</guimenuitem> from the Main Menu.</para>
+
+        <para>You should see all available articles as separate headers with the notation <literal>[XX/Total]</literal> at the end of the subject line.  Instead of the normal <literal>[*/Total]</literal>.</para>
+
+        <para>Next highlite all the articles that comprise the partial binary.</para>
+
+        <para>You may now mark them all for retrieval, or click each one individually to fetch it's body.</para>
+        <!-- }}} -->
+      </section>
+
+      <section>
+        <title>Results of Option A or Option B</title>
+        <!-- {{{ -->
+        <para>After your cue finishes downloading, you should see Yellow article icons next to the headers.  This means bodies are present but not attachments have yet been saved to disk.</para>
+        <!-- }}} -->
+      </section>
+
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Saving out the raw encoded bodies to a file</title>
+      <!-- {{{ -->
+      <para>For binaries that were not missing articles, you may save these to disk by: <guibutton>Right-Click</guibutton> &gt; <guimenuitem>Save All Attachments</guimenuitem>.</para>
+
+      <para>For binaries that WERE missing articles (and complete ones if you wish):</para>
+
+      <para>Highlite a block of articles/headers that corresponds to a single binary file.  From the <guimenu>Main Menu</guimenu> choose: <guisubmenu>File</guisubmenu> &gt; <guimenuitem>Save Messages As...</guimenuitem>.</para>
+
+      <para>An options dialog will open.  Verify the following settings:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Check <guilabel>Save Raw Unformatted Message</guilabel>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Select <guilabel>No Fields, Body Only</guilabel>.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>Choose a location and a file name.  For Yencoded files you will probably want to give it a <filename>.ntx</filename> extension. For Uuencoded files, give it a <filename>.uue</filename> extension.</para>
+
+      <para>You should now have a physical file on your system containing concatenated message bodies still in their raw, encoded format.</para>
+
+      <tip>
+        <para>Many decoders (such as the two at the top of this document) can handle one big file containing lots of article bodies corresponding to many different binary output files.  This tip may save you some time if you learn to utilize this feature.</para>
+      </tip>
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Decoding the raw file into a binary</title>
+      <!-- {{{ -->
+      <para>The next step, we need to convert our saved bodies into a binary file that contains the actual byte data that the PAR2 files shall verify against and recovery with.</para>
+
+      <section>
+        <title>Determine the encoding method used.</title>
+        <!-- {{{ -->
+        <para>Many posters include the string 'yenc' in their posting subject-line. This is a big hint.  If this string is not present, you may need to use trial and error with the two decoding methods below to determine for sure.</para>
+        <!-- }}} -->
+      </section>
+
+      <section>
+        <title>Decoding Yenc</title>
+        <!-- {{{ -->
+        <para>With <application>yenc32</application> your task is simple.</para>
+
+        <para>Start <application>yenc32</application>.</para>
+
+        <para>From the <guimenu>Main Menu</guimenu> choose <guisubmenu>File</guisubmenu> &gt; <guimenuitem>Decode Files(s)</guimenuitem>.</para>
+
+        <para>Navigate to your saved file containing the encoded message bodies. Select that file and choose <guibutton>Open</guibutton>.  A dialog box should appear.  Then choose an output location for the decoded files to be sent.</para>
+
+        <tip>
+          <para>Optionally at this point you have the chance to add more raw encoded files into the processing cue.</para>
+        </tip>
+
+        <para>Press <guibutton>OK</guibutton> to decode, adn you will see the sections that decode sucessfully scroll by.</para>
+
+        <para>Voila, You should have one or more binaries in your specified output location saved using their posted filenames.</para>
+
+        <warning>
+          <para>These generated files may be named properly, but they are most likely corrupt if they were missing articles to begin with. This is where PAR2 comes into play.</para>
+        </warning>
+        <!-- }}} -->
+      </section>
+
+      <section>
+        <title>Decoding Uuencode</title>
+        <!-- {{{ -->
+        <para>:FIXME:</para>
+        <!-- }}} -->
+      </section>
+
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Verifying and Recovery</title>
+      <!-- {{{ -->
+      <para>The download links for the tools in this section are provided at the top of this document.</para>
+
+      <para>At this point you should place all your downloaded/decoded binaries into one location along with the par2 recovery files that were provided.</para>
+
+      <section>
+        <title>Verifying and Recovery with <application>par2cmdline</application></title>
+        <!-- {{{ -->
+
+        <para>Once you have the par2.exe executable in your path (dropping a copy of it in <filename>C:/windows</filename> does the trick), Open a commnd prompt.</para>
+
+        <para><command>cd</command> into the directory containing your binaries.</para>
+
+        <para>Type this at the command line:</para>
+
+        <para><command>par2 verify name-of-a-par2-file.par2</command></para>
+
+        <para><application>par2</application> will return the status of the set of files, if recovery is possible it will tell you so.  To then recover do:</para>
+
+        <para><command>par2 repair name-of-a-par2-file.par2</command></para>
+
+        <tip>
+          <para><application>par2cmdline</application> does not scan the current directory for misnamed files, you may have to adjust your filenames before par2cmdline sees everyting.</para>
+        </tip>
+
+        <para>For More Information: Consult the documentation that comes with the tool or visit it's homepage.</para>
+        <!-- }}} -->
+      </section>
+
+      <section>
+        <title>Verifying and Recovery with QuickPar</title>
+        <!-- {{{ -->
+
+        <para>For users of QuickPar, simply open the directory containing the posted binaries and double-click one of the .par2 files.  QuickPar will open and immediately begin verifying and/or reparing files.</para>
+
+        <tip>
+          <para>QuickPar knows a "few" ways that files are commonly mis-named, but it also does not scan the current directoy at this time. You can manually add files for it to scan using the <guibutton>Add</guibutton> button.</para>
+        </tip>
+
+        <para>For More Information: Consult the documentation that comes with the tool or visit it's homepage.</para>
+        <!-- }}} -->
+      </section>
+
+      <!-- }}} -->
+    </section>
+
+    <!-- }}} -->
+  </section>
+
+  <section>
+    <title>Known Caveats</title>
+    <!-- {{{ -->
+
+    <section>
+      <title>Automation</title>
+      <!-- {{{ -->
+      <para>At the time of writing this document, Agent leaves much to be desired when it comes to automating the process of retrieving and dealing with postings at the article level. By and large, the techniques described in this document are very HANDS ON.</para>
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Storage Issues</title>
+      <!-- {{{ -->
+      <para>The required settings that cause bodies to be retained until manually purged are a huge perormance hit for agent.  It's article databases can get HUGE and you must be careful with where these are stored (configurable in the settings) and preventing them from growing too rapidly when you have large download cues.</para>
+
+      <tip>
+        <para>Turn on the group settings that cause the body to be deleted upon saving an attachment. (but not the auto-save)  This will free up space in your database files as you go, but avoid the broken downloads of partial postings. Just never "<guimenuitem>Save Attachments</guimenuitem>" on a partial binary, for those you must use the "<guimenuitem>Save Messages As...</guimenuitem>" technique and manually decode them.</para>
+      </tip>
+
+      <tip>
+        <para>I would suggest changing your settings to retain bodies, cue up all the partial binaries and fetch their bodies first, then change your settings back for retrieving and auto-saving (deleting bodies as it goes) for the complete postings.</para>
+      </tip>
+      <!-- }}} -->
+    </section>
+
+    <section>
+      <title>Quirky Behavior</title>
+      <!-- {{{ -->
+      <para>I've witnessed some quirky behavior with the header listings when doing lots of manual splitting and joining of postings.</para>
+      <!-- }}} -->
+    </section>
+
+    <!-- }}} -->
+  </section>
 </chapter>
