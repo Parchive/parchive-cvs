@@ -1,0 +1,14 @@
+<part id="part-readers">
+  <title>News Reader Specific Techniques</title>
+  <partintro>
+    <para>This Part of the document goes into specific detail for many of the most popular Usenet news readers.  It mostly pertains to best utilizing the presence of PAR v2.0 files in the binary Usenet downloading process.</para>
+    <para>Because PAR v2.0 can make use of parts down to the usenet article (or segment) level, some exploration of how well each news-reader handles this task is beneficial.</para>
+    <para>If your favorite news-reader is not present, and you <emphasis>are</emphasis> able to download and use PAR 2.0 files effectively, then please contact the project about contributing to this document.
+    </para>
+  </partintro>
+  &chap-reader-introduction;
+  &chap-reader-xnews;
+  &chap-reader-bnr2;
+  &chap-reader-forteagent;
+  &chap-reader-newsrover;
+</part>

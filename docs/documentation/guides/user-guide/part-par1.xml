@@ -1,0 +1,7 @@
+<part id="part-par1">
+  <title>PAR Version 1.0</title>
+  <partintro>
+    <para>An introduction to the general concepts of the Parity Archive Volume Set as implemented with the 1.0 version of the specification, and what this means to the user of PAR Files and Clients that adhere to this version of the specification.</para>
+  </partintro>
+  &chap-par1-introduction;
+</part>
