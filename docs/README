@@ -1,0 +1,19 @@
+###############################################################################
+# 'docs' CVS Module README file.                                              #
+# Version: $Id$                                                               #
+# Copyright 2003 (c) The Parchive Project.                                    #
+# Authors:                                                                    #
+#   Ryan Gallagher <binerman@users.sourceforge.net>                           #
+###############################################################################
+
+PURPOSE:
+  This module and directory structure is to contain the sources of any project
+  documentation that is authored in a structured plain text format.
+
+GUIDELINES:
+  There will be more instructions here in the future.  But a definite no-no
+  would be checking in documentation created with a WYSIWYG editor that does
+  not respect such concepts as a line by line diff.
+
+  Binary documentation, such as MSWord documents (god forbid), is absolutely
+  forbidden unless otherwise approved by the project administrator.
