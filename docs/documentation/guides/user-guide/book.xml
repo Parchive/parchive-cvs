@@ -99,7 +99,9 @@
         <date>$Date$</date>
         <revdescription>
           <simpara>Draft version, in progress</simpara>
-          <literallayout>$Log$</literallayout>
+<literallayout>
+$Log$
+</literallayout>
         </revdescription>
       </revision>
       <!-- }}} -->
