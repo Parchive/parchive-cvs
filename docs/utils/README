@@ -1,0 +1,32 @@
+###############################################################################
+ docs/utils CVS Directory README file
+###############################################################################
+ Version:
+   $Id$
+ Authors:
+   - Ryan Gallagher <binerman@users.sourceforge.net>
+ Copyright:
+   Copyright 2003 (c) The Parchive Project.
+###############################################################################
+
+PURPOSE:
+  This directory exists to make it easy to aquire a local copy of relevant
+  DTDs and other resource files associated with the formats of the
+  documentation.
+
+GUIDELINES:
+  These are NOT maintained by The Parchive Project and cvs should not be used
+  to commit further changes to these files, unless customizations are made for
+  the project.
+
+CONTENTS:
+  - docbook-simple-1.0
+
+    http://www.oasis-open.org/docbook/xml/simple/1.0/index.shtml
+
+    A copy of the Docbook Simplified DTD, can be used with tools like 'xmllint'
+    or 'nsgmls' to that documentation conforms to the standard.  A CSS for
+    docbook simplified is also contained within, and can be useful when html
+    output is generated.
+
+###############################################################################
