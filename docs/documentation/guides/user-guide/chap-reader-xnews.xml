@@ -1,4 +1,113 @@
+<!--
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Parchive User's Guide - $Source$
+|  $Id$
+| For full information see book.xml in this directory.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-->
 <chapter id="chap-reader-xnews">
-  <title>Xnews</title>
-  <para>:FIXME:</para>
+  <title>XNews</title>
+
+  <section>
+    <title>Introduction</title>
+    <!-- {{{ -->
+    <para>This chapter outlines some tips for using PAR2 files with Xnews as your primary news reader.</para>
+
+    <para>Much of this was contributed by Zendrax Xenward from a posting to the parchive development lists.  It was compiled using <application>XNews</application> version 06.02.16 as the reference.</para>
+
+    <para><application>XNews</application> is available for free from <ulink url="http://xnews.newsguy.com">http://xnews.newsguy.com</ulink>.</para>
+
+    <!-- }}} -->
+  </section>
+
+  <section>
+    <title>Steps for PAR2 usage.</title>
+    <!-- {{{ -->
+    <para>After having installed and configured XNews for your server follow these steps:</para>
+
+    <orderedlist numeration="upperalpha">
+      <title>Getting Set Up:</title>
+      <!-- {{{ -->
+      <listitem id="xnews_stepA">
+        <para>Use the menu option <guimenu>Main Menu</guimenu> &gt; <guisubmenu>Folder</guisubmenu> &gt; <guisubmenu>New</guisubmenu> &gt; <guimenuitem>Archive</guimenuitem> give it a name like <userinput>downloaded articles</userinput></para>
+      </listitem>
+
+      <listitem id="xnews_stepB">
+        <para>Use the menu option <guimenu>Main Menu</guimenu> &gt; <guisubmenu>Folder</guisubmenu> &gt; <guisubmenu>New</guisubmenu> &gt; <guimenuitem>Queue</guimenuitem> give it a name like <userinput>planned downloads</userinput></para>
+      </listitem>
+      <!-- }}} -->
+    </orderedlist>
+
+    <orderedlist>
+      <title>Outline of steps for downloading:</title>
+      <!-- {{{ -->
+      <listitem id="xnews_step1">
+<para>
+Find the file set(s) you want to download queue them (single click the <guibutton>Q</guibutton> column).
+</para>
+      </listitem>
+
+      <listitem id="xnews_step2">
+        <para>If you created a Queue in <link linkend="xnews_stepB">step B</link> you can send the articles into the queue to download when you are done collecting the files sets you want to place something in the queue use the menu option <guimenu>Main Menu</guimenu> &gt;<guisubmenu>Transfer</guisubmenu> &gt; <guimenuitem>-&gt;/planned downloads/</guimenuitem></para>
+      </listitem>
+
+      <listitem id="xnews_step3">
+        <para>Repeat <link linkend="xnews_step1">step 1</link> (and <link linkend="xnews_step2">step 2</link>) until you have all the file sets you want from the server.</para>
+      </listitem>
+
+      <listitem id="xnews_step4">
+        <para>If you created a Queue in <link linkend="xnews_stepB">step B</link> use menu option <guisubmenu>Folder</guisubmenu> &gt; <guimenuitem>/planned downloads/</guimenuitem> then in the new window sort the list of articles by date so that older articles are at the top (by clicking the <guibutton>Date</guibutton> column heading until there is a triangle pointing upwards) then <command>select all</command> (<keycombo action="simul"><keycap>Ctrl</keycap><keycap>A</keycap></keycombo>).</para>
+      </listitem>
+
+      <listitem id="xnews_step5">
+        <para>If you created a Archive in <link linkend="xnews_stepA">step A</link> use menu option <guisubmenu>Transfer</guisubmenu> &gt; <guimenuitem>-&gt;downloaded articles</guimenuitem>, this will download the oldest articles first and give less problems with articles disappearing during download.</para>
+      </listitem>
+
+      <listitem id="xnews_step6">
+<para>If you created a Archive in <link linkend="xnews_stepA">step A</link> use menu option <guisubmenu>Folder</guisubmenu> &gt; <guimenuitem>downloaded</guimenuitem> articles select all files.</para>
+      </listitem>
+
+      <listitem id="xnews_step7">
+        <para>Use menu option <guisubmenu>Article</guisubmenu> &gt; <guimenuitem>Decode</guimenuitem> (or press <guibutton>stacked cubes</guibutton> or press <keycap>F4</keycap>) select the directory were you want to download the files and press decode. </para>
+      </listitem>
+
+      <listitem id="xnews_step8">
+        <para>Double click on one of the par2 files to verify the file set and do any repairs that are needed.</para>
+      </listitem>
+
+      <listitem id="xnews_step9">
+        <para>If you created a Archive in <link linkend="xnews_stepA">step A</link> you can remove all complete binaries but unless par2 could repair the file set you should keep the incomplete files if there is an backfill (single article repost).</para>
+      </listitem>
+
+      <listitem id="xnews_step10">
+<para>If you created a Queue in <link linkend="xnews_stepB">step B</link> you can remove all downloaded articles if there are any articles that are not downloaded you can retry later or with another Usenet server (if you have any).</para>
+      </listitem>
+      <!-- }}} -->
+    </orderedlist>
+
+    <note>
+      <para>In the past (before par2) I would have recommended in <link linkend="xnews_step4">step 4</link> that you reverse the sort and download the newest articles first since then you would get the most complete files but now with par2 every article is useful so this oldest first is probably the best.</para>
+    </note>
+
+    <!-- }}} -->
+  </section>
+
+  <section>
+    <title>Known Caveats</title>
+    <!-- {{{ -->
+
+    <orderedlist>
+      <title>Xnews Caveats (relative to PAR2)</title>
+      <!-- {{{ -->
+      <listitem>
+        <para>Like many news-readers.  The version of <application>XNews</application> available at the time of writing does not seem to handle Uuencoded partial files properly.  The problem occurs if the first article, part 01/XX, is missing or corrupted.  If <application>XNews</application> cannot find this article, it does not know what filename to use in saving out the file, and thus fails for the entire file.</para>
+
+        <para>If you know a workaround, or this situation changes, please contact the <ulink url="http://parchive.sourceforge.net">Parchive Project</ulink> and we'll update this document.</para>
+      </listitem>
+      <!-- }}} -->
+    </orderedlist>
+
+    <!-- }}} -->
+  </section>
+
 </chapter>
