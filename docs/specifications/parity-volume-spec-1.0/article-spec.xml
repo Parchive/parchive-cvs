@@ -1,0 +1,666 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD Simplified DocBook XML V4.1.2.5//EN"
+  "http://www.oasis-open.org/docbook/xml/simple/4.1.2.5/sdocbook.dtd">
+<!--
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Parity Archive Client IDs (Spec v1.0)
+|  $Id$
+|
+| AUTHORS:
+|  Stefan Wehlus      (Principle Author)  <whelus@users.sourceforge.net>
+|  Tobias Reiper      (Initial Idea)
+|  Kilroy Balore      (Contributor)
+|  Willem Monsuwe     (Contributor)       <monsuwe@users.sourceforge.net>
+|  Karl Vogel         (Conributor)
+|  Ryan Gallagher     (Formatter)         <binerman@users.sourceforge.net>
+|
+| FORMATTING:
+|  The following document is authored in Docbook Simplified (XML).
+|
+|  The DTD and other resources can be found here:
+|   <http://www.docbook.org/xml/simple/4.1.2.5/index.html>
+|
+|  Docbook Simplified is a subset of Docbook SGML/XML and can be output
+|  with the same tools for that more extensive format.
+|
+|  For instructions for producing viewable outputs from this format read
+|  any of the links below...
+|
+|  Docbook Definitive Guide:
+|   <http://docbook.org/tdg/en/index.html>
+|  Chapter on Publishing Docbook:
+|   <http://www.oasis-open.org/docbook/documentation/reference/html/ch04.html>
+|
+| COPYRIGHT:
+|  This document has no official copyright, however there is a legal
+|  disclaimer in the <legalinfo> tag of the source.
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| vim: set filetype=xml :
+| vim: set ts=2 :
+| vim: set sw=2 :
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+<article>
+  <articleinfo>
+    <!-- {{{ -->
+    <title>Parity Volume Set Specification v1.0</title>
+    <pubdate>October 14th, 2001</pubdate>
+    <publishername>
+      The Parchive Project
+      <ulink url="http://parchive.sourceforge.net">http://parchive.sourceforge.net</ulink>
+    </publishername>
+    <revhistory>
+      <revision>
+        <revnumber>1.0</revnumber>
+        <date>April 2nd, 2003</date>
+        <revremark>Formatting Changes (Docbook Simplified by Ryan)</revremark>
+      </revision>
+      <revision>
+        <revnumber>1.0</revnumber>
+        <date>October 14th, 2001</date>
+        <revremark>Stable</revremark>
+      </revision>
+      <revision>
+        <revnumber>0.9</revnumber>
+        <date>October 7th, 2001</date>
+        <revremark>Pass 3 draft revision</revremark>
+      </revision>
+      <revision>
+        <revnumber>0.3</revnumber>
+        <date>July 16th, 2001</date>
+        <revremark>Pass 2 draft revision</revremark>
+      </revision>
+      <revision>
+        <revnumber>0.1</revnumber>
+        <date>July 12th, 2001</date>
+        <revremark>Initial Submission, by Beaker</revremark>
+      </revision>
+    </revhistory>
+    <copyright>
+      <year>2001</year>
+      <year>2002</year>
+      <year>2003</year>
+      <holder>
+        The Authors
+      </holder>
+    </copyright>
+    <legalnotice>
+      <para>
+        The introduced principles, the file format secification and it's
+        details can be used free by everyone for any type of software. There
+        will be no license or other limitations.
+      </para>
+      <para>
+        It doesn't matter, if you are writing open, closed or shared
+        source, public domain, freeware, shareware or commercial software
+        - you can use this spec.
+      </para>
+      <para>
+        But if you use the PAR/PXX file format and want to make changes
+        to the format, you have to discuss them with the project (<ulink url="http://parchive.sourceforge.net">http://parchive.sourceforge.net</ulink>)
+        to maintain compatibility.
+      </para>
+    </legalnotice>
+
+    <authorgroup>
+      <author>
+        <firstname>Stefan</firstname>
+        <surname>Wehlus</surname>
+        <authorblurb>
+          <para>Principle Author</para>
+        </authorblurb>
+      </author>
+    </authorgroup>
+
+    <authorgroup>
+      <othercredit>
+        <firstname>Tobias</firstname>
+        <surname>Reiper</surname>
+        <authorblurb>
+          <para>Contributed the initial idea.</para>
+        </authorblurb>
+      </othercredit>
+    </authorgroup>
+
+    <authorgroup>
+      <othercredit>
+        <firstname>Kilroy</firstname>
+        <surname>Balore</surname>
+        <authorblurb>
+          <para>Contributed suggestions and formatting.</para>
+        </authorblurb>
+      </othercredit>
+      <othercredit>
+        <firstname>Willem</firstname>
+        <surname>Monsuwe</surname>
+        <authorblurb>
+          <para>Contributed suggestions and formatting.</para>
+        </authorblurb>
+      </othercredit>
+      <othercredit>
+        <firstname>Karl</firstname>
+        <surname>Vogel</surname>
+        <authorblurb>
+          <para>Contributed suggestions and formatting.</para>
+        </authorblurb>
+      </othercredit>
+      <othercredit>
+        <firstname>Ryan</firstname>
+        <surname>Gallagher</surname>
+        <authorblurb>
+          <para>Contributed the SGML/XML Docbook Simplified Version.</para>
+        </authorblurb>
+      </othercredit>
+    </authorgroup>
+    <!-- }}} -->
+  </articleinfo>
+  <section id="s1">
+    <!-- {{{ -->
+    <title>Overview</title>
+    <para>
+      The following document describes a file format called Parity
+      Volume Set.
+    </para>
+    <para>
+      A Parity Volume Set provides RAID like parity records for a given
+      number of files. With this parity records it is possible to restore
+      missing files of the set.
+    </para>
+
+    <example id="ex-dataset">
+      <!-- {{{ -->
+      <title>An example file set</title>
+      <para>
+        You have 10 data files:
+      </para>
+      <informaltable frame="sides">
+        <!-- {{{ -->
+        <tgroup cols="1">
+          <thead valign="middle">
+            <row><entry>Data Files</entry></row>
+          </thead>
+          <tbody>
+            <row><entry>Foobar.d01</entry></row>
+            <row><entry>Foobar.d02</entry></row>
+            <row><entry>Foobar.d03</entry></row>
+            <row><entry>Foobar.d04</entry></row>
+            <row><entry>Foobar.d05</entry></row>
+            <row><entry>Foobar.d06</entry></row>
+            <row><entry>Foobar.d07</entry></row>
+            <row><entry>Foobar.d08</entry></row>
+            <row><entry>Foobar.d09</entry></row>
+            <row><entry>Foobar.d10</entry></row>
+          </tbody>
+        </tgroup>
+        <!-- }}} -->
+      </informaltable>
+      <para>
+        With a program using this specification you can calculate parity
+        volumes for these files.
+      </para>
+      <informaltable frame="sides">
+        <!-- {{{ -->
+        <tgroup cols="1">
+          <thead valign="middle">
+            <row><entry>Parity Volumes</entry></row></thead>
+          <tbody>
+            <row><entry>Foobar.p01</entry></row>
+            <row><entry>Foobar.p02</entry></row>
+            <row><entry>Foobar.p03</entry></row>
+          </tbody>
+        </tgroup>
+        <!-- }}} -->
+      </informaltable>
+      <!-- }}} -->
+    </example>
+
+    <para>
+      The parity volumes contain a reed solomon checksum of the data of the
+      data files. So if a file is missing or corrupt, it can be reconstructed
+      out of the remaining data files and the parity volumes. Any file of this
+      set can be reconstructed with any parity volume. You just need as much
+      parity volumes, as files you are missing.
+    </para>
+    <para>
+      For instance, in the example above, Foobar.d03 is lost. So it is
+      possible to restore Foobar.d03 using the remaining data files and one
+      parity volume. It doesn't matter, which parity volume
+      (p01/p02/p03) - everyone will do...
+    </para>
+    <para>
+      In case you miss 2 files, you need 2 parity volumes. What parity volumes
+      and their combination (p01+p02/p01+p03/p02+p03) doesn't matter too
+      - you just need two of them. (They have to be different: renaming
+      a copy of foobar.p01 to foobar.p02 and using it with foobar.p01 to
+      restore will not work...)
+    </para>
+    <!-- }}} -->
+  </section>
+  <section id="s2">
+    <!-- {{{ -->
+    <title>General Description</title>
+    <para>
+      A parity volume set consists of two parts. First there is a .PAR file
+      (the index file).
+    </para>
+    <para>
+      It contains information about the files, which are "saved" in the
+      volume sets:
+    </para>
+    <itemizedlist mark="opencircle">
+      <!-- {{{ -->
+      <listitem>
+        <para>what files are stored in the set</para>
+      </listitem>
+      <listitem>
+        <para>their checksums (MD5)</para>
+      </listitem>
+      <listitem>
+        <para>their size</para>
+      </listitem>
+      <listitem>
+        <para>their filename</para>
+      </listitem>
+      <listitem>
+        <para>a general comment for the set</para>
+      </listitem>
+      <!-- }}} -->
+    </itemizedlist>
+    <para>
+      Second there are the parity volume files. They are named .P00, .P01,
+      P02..... PXX. (After .P99, there will be .Q00...)
+    </para>
+    <para>
+      They contain:
+    </para>
+    <itemizedlist mark="opencircle">
+      <!-- {{{ -->
+      <listitem>
+        <para>the same information as the PAR file (besides the comment)</para>
+      </listitem>
+      <listitem>
+        <para>the calculated parity data of the stored files</para>
+      </listitem>
+      <!-- }}} -->
+    </itemizedlist>
+    <!-- }}} -->
+  </section>
+  <section id="s3">
+    <!-- {{{ -->
+    <title>Format Specifications for a .PAR/.PXX File</title>
+    <para>
+      <emphasis>The data is stored in <quote>Intel Notation</quote>.</emphasis>
+    </para>
+
+    <table frame="all" id="table-formatspec">
+      <!-- {{{ -->
+      <title>File Format Specification</title>
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>Offset</entry>
+            <entry>Type (Size)</entry>
+            <entry>Data</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>0x0000</entry>
+            <entry>8 Bytes</entry>
+            <entry>
+              <para>Identification String:</para>
+              <para><quote>PAR</quote>\0</para>
+              <para>Comment:</para>
+              <para>The string <quote>PAR</quote> followed by 5 null bytes.</para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0008</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>Version Number</para>
+              <para>The version number consists of two parts.</para>
+              <itemizedlist mark="opencircle">
+                <listitem>
+                  <para>
+                    The low Dword (bit 0..31) is the version - $00010000
+                    for v01.00
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    The high Dword (bit 32..63) is a identifier for the
+                    generating program. The client can use it to see, which
+                    program generated the parity volume set. This may come in
+                    handy, if your program needs to know, if it was the
+                    generator itself. (Maybe to see, if it can use some
+                    proprietary bits in the status register or to notify, if
+                    new versions are out...)
+                  </para>
+                </listitem>
+              </itemizedlist>
+              <para>
+                The coding is <quote>program</quote>-<quote>version</quote>-<quote>subversion</quote>-<quote>subsubversion</quote>.
+              </para>
+              <para>
+                <quote>Program</quote> codes so far:
+              </para>
+              <itemizedlist>
+                <listitem>
+                  <para>00 - Undefined</para>
+                </listitem>
+                <listitem>
+                  <para>01 - Mirror</para>
+                </listitem>
+                <listitem>
+                  <para>02 - PAR</para>
+                </listitem>
+              </itemizedlist>
+              <para>
+                Example: Mirror 0.2.1 has $01000201 as program identifier.
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0010</entry>
+            <entry>16 Bytes</entry>
+            <entry>
+              <para>Control Hash</para>
+              <itemizedlist>
+                <listitem>
+                  <para>
+                    a MD5 hash of the rest of the file starting from 0x0020 to
+                    the end
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    used to detect a corrupt file.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0020</entry>
+            <entry>16 Bytes</entry>
+            <entry>
+              <para>set hash</para>
+              <para>used as an identifier for the parity volume set</para>
+              <para>Creation:</para>
+              <para>
+                Make a array of bytes (one dimendion, size=used files*16).
+                Then put the MD5 hashes (not the MD516k hashes) there,
+                starting with the first file. Use only the files, which are
+                included in the parity data (status bit 0 = 1). Then
+                calculate the MD5 hash of this array.
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0030</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>number of files</para>
+              <para>the number of files stored in the parity volume set</para>
+              <para>
+                (only the input data files - the parity volumes are not
+                counted)
+              </para>
+              <para>
+                The files, which are not stored in the parity data, but in the
+                file list for CRC checking, are counted too. So this is the
+                number of files in the file list.
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0040</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>start offset of the file list</para>
+              <para>
+                <emphasis>the start offset of the list of stored files</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0048</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>file list size</para>
+              <para>
+                <emphasis>the size of the file list in bytes</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0050</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>start offset of the data</para>
+              <para>
+                <emphasis>the start offset of the data area</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0058</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>data size</para>
+              <para>
+                <emphasis>the size of the data area in bytes</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0060</entry>
+            <entry>...</entry>
+            <entry>
+              <para>file list</para>
+              <para>
+                <emphasis>this is the start of the list of the saved files</emphasis>
+              </para>
+              <para>
+                <emphasis>it consists of file entrys</emphasis>
+              </para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+      <!-- }}} -->
+    </table>
+
+    <table frame="all" id="entry-spec">
+      <!-- {{{ -->
+      <title>A File Entry has the following format:</title>
+      <tgroup cols="3" align="left" colsep="1" rowsep="1">
+        <thead>
+          <row>
+            <entry>Offset</entry>
+            <entry>Type (Size)</entry>
+            <entry>Data</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>0x0000</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>entry size</para>
+              <para>
+                <emphasis>the size of the file list entry in bytes</emphasis>
+              </para>
+              <para>
+                <emphasis>counting starts at 1, this record is counted too</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0008</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>status field</para>
+              <para><emphasis>64 bits for status flags or numbers</emphasis></para>
+              <para><emphasis>currently only bit 0 and 1 are used:</emphasis></para>
+              <itemizedlist>
+                <listitem>
+                  <para>bit0 = 0 - file is not saved in the parity volume set</para>
+                </listitem>
+                <listitem>
+                  <para>bit0 = 1 - file is saved in the parity volume set</para>
+                </listitem>
+                <listitem>
+                  <para>bit1 = 0 - file is not checked successfully yet</para>
+                </listitem>
+                <listitem>
+                  <para>bit1 = 1 - file was successfully checked</para>
+                </listitem>
+              </itemizedlist>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0010</entry>
+            <entry>1 QWord</entry>
+            <entry>
+              <para>size</para>
+              <para><emphasis>the size of the stored file in bytes</emphasis></para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0018</entry>
+            <entry>16 Bytes</entry>
+            <entry>
+              <para>MD5 Hash</para>
+              <para>
+                <emphasis>a MD5 hash of the whole file</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0028</entry>
+            <entry>16 Bytes</entry>
+            <entry>
+              <para>16k MD5 hash</para>
+              <para>
+                <emphasis>a MD5 hash of the first 16384 Bytes of the file</emphasis>
+              </para>
+              <para>
+                <emphasis>if the file is smaller than 16k, only the exisdting bytes are used</emphasis>
+              </para>
+            </entry>
+          </row>
+          <row>
+            <entry>0x0038</entry>
+            <entry>X Words</entry>
+            <entry>
+              <para>filename</para>
+              <para>
+                <emphasis>the full filename with extension in Unicode</emphasis>
+              </para>
+              <para>("foobar.d01")</para>
+              <para><emphasis>paths are not allowed</emphasis></para>
+              <para>
+                <emphasis>no end indicators, you have to compute the size out of the entrysize (chars = (entrysize - 0x38) DIV 2)</emphasis>
+              </para>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+      <!-- }}} -->
+    </table>
+
+    <para>
+      After the file list, the data area starts.
+    </para>
+    <para>
+      For the PAR file, the data area contains a comment for the volume set. The
+      comment is stored in uniode, control characters are allowed.
+    </para>
+    <para>
+      For the Pxx files, the data area contains the checksum data.
+    </para>
+    <para>
+      Comupting of the checksum data:
+    </para>
+    <para>
+      You have <emphasis>n</emphasis> files and want to create
+      <emphasis>m</emphasis> parity data. So you create a data field
+      <emphasis>D1..Dm</emphasis>, where <emphasis>D1</emphasis> is the first
+      byte of file1, <emphasis>D2</emphasis> is the first byte of file2,
+      <emphasis>D3</emphasis> is the first byte of file 3...
+      <emphasis>Dn</emphasis> is the first byte of file
+      <emphasis>n</emphasis>.  For this field you create a field of m parity
+      checksums <emphasis>C1..Cm</emphasis>. <emphasis>C1</emphasis> is
+      stored as the first parity byte of .p01, <emphasis>C2</emphasis> is
+      stored as the first parity byte of .p02, <emphasis>C3</emphasis> is
+      stored as the first parity byte of .p03... <emphasis>Cm</emphasis> is
+      stored as the first parity byte of .pm.
+    </para>
+    <para>
+      Then process the second byte of all files and so on, until you reached the end of the biggest input file. If a file has no bytes left, use 0 for the calculation. So the size of the parity data will be the size of the biggest file stored in the parity volume set.
+    </para>
+    <para>
+      For calculating the checksums, the Reed-Solomon algorithm is used. A good description of this algorithm for programmers is <ulink url="http://www.cs.utk.edu/~plank/plank/papers/CS-96-332.html">http://www.cs.utk.edu/~plank/plank/papers/CS-96-332.html</ulink>.
+    </para>
+    <para>
+      The "wordsize" is 8 bit, so you calculate with Bytes only. (This restricts the number of files + parity volumes to be less than 256.)
+    </para>
+
+    <section>
+      <title>Comments</title>
+      <!-- {{{ -->
+      <itemizedlist>
+        <!-- {{{ -->
+        <listitem>
+          <para>
+            <emphasis>Why the 16k MD5 hashes?</emphasis>
+          </para>
+          <para>
+            One demanded feature is, that the program will find its files even if the filenames are changed. So maybe, if the program won't find the files due to renaming, you click the "search" button and then it checks the MD5 hashes of all files in the directory to find his files. But with large numbers of large files this will take a long time. With the 16k hashes, the program only needs to check the first 16k of each file. This will be much faster. If it finds a file, it can make a full hash too, just to be sure...
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis>Why the file is saved - status flag?</emphasis>
+          </para>
+          <para>
+            Maybe the PAR file is only used to provide file comments and checksums. The files are not saved in a PXX volume then.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis>Why the file is checked - status flag?</emphasis>
+          </para>
+          <para>
+            So you can build in a function, that your program skips already successfully checked files. Repeated checking of the same set will be faster this way. (Like with QuickSFV)
+          </para>
+        </listitem>
+        <!-- }}} -->
+      </itemizedlist>
+      <!-- }}} -->
+    </section>
+
+    <!-- }}} -->
+  </section>
+  <section id="s4">
+    <!-- {{{ -->
+    <title>Implementation Issues</title>
+    <para>
+      A file present in the file list doesn't have to be stored in the parity data at all times. So, some (or all) files can be just for checksum control or file comments in the PAR file. (In case, only a .SFV or .NFO functionality is needed...)
+    </para>
+    <para>
+      The saved files can be of any type and size.
+    </para>
+    <para>
+      There are no informations about the parity volumes stored in the header. So the program has to scan the directory for present parity volumes. They can be identified with the set hash.
+    </para>
+    <para>
+      There is no explicit rule for the order of the entrys in the filelist, but I recommend to sort the filenames in ascending order.
+    </para>
+    <!-- }}} -->
+  </section>
+</article>
+

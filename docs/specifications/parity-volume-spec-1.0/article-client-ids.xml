@@ -1,0 +1,96 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD Simplified DocBook XML V4.1.2.5//EN"
+  "http://www.oasis-open.org/docbook/xml/simple/4.1.2.5/sdocbook.dtd">
+<!--
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| Parity Archive Client IDs (Spec v1.0)
+|  $Id$
+|
+| AUTHORS:
+|  Stefan Wehlus      (Principle Author)  <whelus@users.sourceforge.net>
+|  Tobias Reiper      (Initial Idea)
+|  Kilroy Balore      (Contributor)
+|  Willem Monsuwe     (Contributor)       <monsuwe@users.sourceforge.net>
+|  Karl Vogel         (Conributor)
+|  Ryan Gallagher     (Formatter)         <binerman@users.sourceforge.net>
+|
+| FORMATTING:
+|  The following document is authored in Docbook Simplified (XML).
+|
+|  The DTD and other resources can be found here:
+|   <http://www.docbook.org/xml/simple/4.1.2.5/index.html>
+|
+|  Docbook Simplified is a subset of Docbook SGML/XML and can be output
+|  with the same tools for that more extensive format.
+|
+|  For instructions for producing viewable outputs from this format read
+|  any of the links below...
+|
+|  Docbook Definitive Guide:
+|   <http://docbook.org/tdg/en/index.html>
+|  Chapter on Publishing Docbook:
+|   <http://www.oasis-open.org/docbook/documentation/reference/html/ch04.html>
+|
+| COPYRIGHT:
+|  This document has no official copyright, however there is a legal
+|  disclaimer in the <legalinfo> tag of the source.
+|
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+| vim: set filetype=xml :
+| vim: set ts=2 :
+| vim: set sw=2 :
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+-->
+<article>
+  <articleinfo>
+    <title>Client IDs for Specification v1.0</title>
+    <date>October 14th, 2001</date>
+    <copyright>
+      <year>2001</year>
+      <year>2002</year>
+      <year>2003</year>
+      <holder>
+        The Parchive Project
+        <ulink url="http://parchive.sourceforge.net">
+          http://parchive.sourceforge.net
+        </ulink>
+      </holder>
+    </copyright>
+
+    <authorgroup>
+      <author>
+        <firstname>The Parchive Project</firstname>
+      </author>
+    </authorgroup>
+
+  </articleinfo>
+
+  <!-- begin content -->
+  <section id="s1">
+    <title>Client IDs</title>
+    <para>
+      The following are client IDs for known clients written to handle and
+      conform to the Parity Archive Volume Specification v1.0
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para><computeroutput>00</computeroutput> - undefined</para>
+      </listitem>
+      <listitem>
+        <para><computeroutput>01</computeroutput> - mirror</para>
+      </listitem>
+      <listitem>
+        <para><computeroutput>02</computeroutput> - PAR command line utility</para>
+      </listitem>
+      <listitem>
+        <para><computeroutput>0xff</computeroutput> - fsraid</para>
+      </listitem>
+      <listitem>
+        <para><computeroutput>0xfe</computeroutput> - news?</para>
+      </listitem>
+    </itemizedlist>
+
+  </section>
+
+</article>
+
