@@ -20,3 +20,15 @@ GUIDELINES:
 
   Binary documentation, such as MSWord documents (god forbid), is absolutely
   forbidden unless otherwise approved by the project administrator.
+
+CONTENTS:
+  - specifications/
+    Home of the parchive parity file specifications.
+  - documentation/
+    Other, non-spec documentation.
+  - styles/
+    Custom stylesheets for the formatted versions of the documentation.
+  - utils/
+    Refernces and Utilities for documenting and formatting the docs.
+
+###############################################################################
