@@ -29,6 +29,7 @@
 |  Ryan Gallagher     <binerman@users.sourceforge.net>
 |
 | CONTRIBUTORS:
+|  Zendrax Xenward    <z_necron_3@hotmail.com>
 |
 | COPYRIGHT:
 |  Copyright (c) 2003, The Parchive Project
@@ -65,17 +66,46 @@
   <bookinfo>
     <title>Parchive User's Guide</title>
     <subtitle>Helpful Suggestions for Using Parity Recovery Volumes Effectively</subtitle>
-    <author>
-      <firstname>Ryan</firstname>
-      <surname>Gallagher</surname>
-    </author>
+    <!-- {{{ -->
+
+    <authorgroup>
+      <!-- {{{ -->
+      <author>
+        <firstname>Ryan</firstname>
+        <surname>Gallagher</surname>
+        <email>binerman@users.sourceforge.net</email>
+      </author>
+      <othercredit>
+        <firstname>Zendrax</firstname>
+        <surname>Xenward</surname>
+        <contrib>Contributed Xnews Chapter rough draft.</contrib>
+      </othercredit>
+      <!-- }}} -->
+    </authorgroup>
+
     <copyright>
       <year>2003</year>
       <holder>The Parchive Project</holder>
     </copyright>
+
     <legalnotice>
       Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.  A copy of the license is included in the section entitled "GNU Free Documentation License".
     </legalnotice>
+
+    <revhistory>
+      <!-- {{{ -->
+      <revision>
+        <revnumber>$Revision$</revnumber>
+        <date>$Date$</date>
+        <revdescription>
+          <simpara>Draft version, in progress</simpara>
+          <literallayout>$Comment$</literallayout>
+        </revdescription>
+      </revision>
+      <!-- }}} -->
+    </revhistory>
+
+    <!-- }}} -->
   </bookinfo>
 
   <!-- book preface -->
